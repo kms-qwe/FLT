@@ -1,17 +1,84 @@
-use rand::{seq::SliceRandom, Rng, SeedableRng};
-use std::collections::{HashMap, HashSet, VecDeque};
+use rand::{Rng, SeedableRng, seq::SliceRandom};
+use std::collections::{HashSet, VecDeque};
 
 type Rule = (String, String);
 type Rules = Vec<Rule>;
 
-fn kb_completion_rules(max_n: usize) -> Rules {
-    let mut out = Vec::new();
-    for n in 1..=max_n {
-        let lhs = format!("G{}G", "F".repeat(n));
-        let rhs = format!("G{}", "F".repeat(n + 1));
-        out.push((lhs, rhs));
+mod cfg {
+    use super::Rules;
+
+    pub const ALPHABET: &[char] = &['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'Q'];
+
+    pub const T_BASE: &[(&str, &str)] = &[
+        ("JFF", "EID"),
+        ("CFG", "IC"),
+        ("GF", "GG"),
+        ("IC", "JI"),
+        ("AD", "BD"),
+        ("FFI", "HGH"),
+        ("FHDQ", "FHEDQ"),
+        ("HA", "JH"),
+        ("HE", "HDD"),
+        ("GGA", "HCE"),
+        ("IBB", "DDI"),
+    ];
+
+    pub const TPRIME_BASE: &[(&str, &str)] = &[
+        ("JFF", "EID"),
+        ("CFG", "IC"),
+        ("GG", "GF"),
+        ("JI", "IC"),
+        ("BD", "AD"),
+        ("HGH", "FFI"),
+        ("FHEDQ", "FHDQ"),
+        ("JH", "HA"),
+        ("HDD", "HE"),
+        ("HCE", "GGA"),
+        ("IBB", "DDI"),
+    ];
+
+    pub const KB_MAX_N: Option<usize> = Some(12);
+
+    pub const NUM_TRIALS: usize = 500;
+
+    pub const GEN_MIN_LEN: usize = 1;
+    pub const GEN_MAX_LEN: usize = 10;
+
+    pub const CHAIN_MIN_STEPS: usize = 1;
+    pub const CHAIN_MAX_STEPS: usize = 10;
+
+    pub const NF_MAX_DEPTH: usize = 200;
+    pub const NF_MAX_NODES: usize = 200_000;
+
+    pub const RNG_SEED: u64 = 7;
+
+    pub fn rules_from(slice: &[(&str, &str)]) -> Rules {
+        slice
+            .iter()
+            .map(|(l, r)| (l.to_string(), r.to_string()))
+            .collect()
     }
-    out
+
+    pub fn rules_t() -> Rules {
+        rules_from(T_BASE)
+    }
+
+    pub fn kb_completion_rules(max_n: usize) -> Rules {
+        let mut out = Vec::new();
+        for n in 1..=max_n {
+            let lhs = format!("G{}G", "F".repeat(n));
+            let rhs = format!("G{}", "F".repeat(n + 1));
+            out.push((lhs, rhs));
+        }
+        out
+    }
+
+    pub fn build_tprime() -> Rules {
+        let mut tprime = rules_from(TPRIME_BASE);
+        let extra = KB_MAX_N.map(kb_completion_rules).unwrap_or_default();
+        tprime.extend(extra);
+        tprime
+    }
 }
 
 fn dedup_rules(rules: &Rules) -> Rules {
@@ -24,23 +91,6 @@ fn dedup_rules(rules: &Rules) -> Rules {
         }
     }
     out
-}
-
-fn collect_alphabet(systems: &[&Rules]) -> Vec<char> {
-    let mut set: HashSet<char> = HashSet::new();
-    for rules in systems {
-        for (lhs, rhs) in rules.iter() {
-            for c in lhs.chars() {
-                set.insert(c);
-            }
-            for c in rhs.chars() {
-                set.insert(c);
-            }
-        }
-    }
-    let mut v: Vec<char> = set.into_iter().collect();
-    v.sort_unstable();
-    v
 }
 
 fn neighbors_fwd(word: &str, rules: &Rules) -> HashSet<String> {
@@ -69,13 +119,18 @@ fn rand_word(alphabet: &[char], min_len: usize, max_len: usize, rng: &mut impl R
     let l = rng.gen_range(min_len..=max_len);
     let mut s = String::with_capacity(l);
     for _ in 0..l {
-        let ch = alphabet.choose(rng).unwrap();
-        s.push(*ch);
+        s.push(*alphabet.choose(rng).unwrap());
     }
     s
 }
 
-fn random_chain(word: &str, rules: &Rules, min_steps: usize, max_steps: usize, rng: &mut impl Rng) -> Vec<String> {
+fn random_chain(
+    word: &str,
+    rules: &Rules,
+    min_steps: usize,
+    max_steps: usize,
+    rng: &mut impl Rng,
+) -> Vec<String> {
     let mut w = word.to_string();
     let mut chain = vec![w.clone()];
     let steps = rng.gen_range(min_steps..=max_steps);
@@ -90,52 +145,54 @@ fn random_chain(word: &str, rules: &Rules, min_steps: usize, max_steps: usize, r
     chain
 }
 
-fn reachable_unidirectional(src: &str, dst: &str, rules: &Rules, max_depth: usize, max_nodes: usize) -> (bool, Vec<String>) {
-    if src == dst {
-        return (true, vec![src.to_string()]);
-    }
+fn normal_forms_all(
+    start: &str,
+    rules: &Rules,
+    max_depth: usize,
+    max_nodes: usize,
+) -> (HashSet<String>, bool) {
     let mut q: VecDeque<(String, usize)> = VecDeque::new();
-    let mut parents: HashMap<String, Option<String>> = HashMap::new();
     let mut visited: HashSet<String> = HashSet::new();
+    let mut nforms: HashSet<String> = HashSet::new();
+
+    q.push_back((start.to_string(), 0));
+    visited.insert(start.to_string());
+
     let mut expanded = 0usize;
-    q.push_back((src.to_string(), 0));
-    parents.insert(src.to_string(), None);
-    visited.insert(src.to_string());
+    let mut cut = false;
+
     while let Some((u, d)) = q.pop_front() {
         if expanded >= max_nodes {
+            cut = true;
             break;
         }
-        if d >= max_depth {
+        let outs = neighbors_fwd(&u, rules);
+        if outs.is_empty() {
+            nforms.insert(u);
             continue;
         }
-        let neigh = neighbors_fwd(&u, rules);
-        for v in neigh {
+        if d >= max_depth {
+            cut = true;
+            continue;
+        }
+        for v in outs {
             if expanded >= max_nodes {
+                cut = true;
                 break;
             }
             expanded += 1;
-            if visited.contains(&v) {
-                continue;
+            if visited.insert(v.clone()) {
+                q.push_back((v, d + 1));
             }
-            visited.insert(v.clone());
-            parents.insert(v.clone(), Some(u.clone()));
-            if v == dst {
-                let mut path = Vec::new();
-                let mut x = Some(v.clone());
-                while let Some(cur) = x {
-                    path.push(cur.clone());
-                    x = parents.get(&cur).cloned().unwrap_or(None);
-                }
-                path.reverse();
-                return (true, path);
-            }
-            q.push_back((v, d + 1));
+        }
+        if cut {
+            break;
         }
     }
-    (false, Vec::new())
+    (nforms, cut)
 }
 
-fn fuzz_forward_only(
+fn fuzz_nf_compare(
     t: &Rules,
     tprime: &Rules,
     num_trials: usize,
@@ -143,57 +200,52 @@ fn fuzz_forward_only(
     gen_max_len: usize,
     chain_min_steps: usize,
     chain_max_steps: usize,
-    bfs_max_depth: usize,
-    bfs_max_nodes: usize,
+    nf_max_depth: usize,
+    nf_max_nodes: usize,
     seed: u64,
-) -> (usize, usize, usize) {
+) -> (usize, usize) {
     let mut rng = rand::rngs::StdRng::seed_from_u64(seed);
     let t = dedup_rules(t);
     let tprime = dedup_rules(tprime);
-    let alphabet = collect_alphabet(&[&t, &tprime]);
-    let mut ok = 0usize;
+
+    let mut success = 0usize;
     let mut fail = 0usize;
+
     for _ in 0..num_trials {
-        let w0 = rand_word(&alphabet, gen_min_len, gen_max_len, &mut rng);
-        let chain = random_chain(&w0, &t, chain_min_steps, chain_max_steps, &mut rng);
-        let w1 = chain.last().unwrap().clone();
-        let (hit, _) = reachable_unidirectional(&w0, &w1, &tprime, bfs_max_depth, bfs_max_nodes);
-        if hit { ok += 1; } else { fail += 1; }
+        let w = rand_word(cfg::ALPHABET, gen_min_len, gen_max_len, &mut rng);
+        let chain = random_chain(&w, &t, chain_min_steps, chain_max_steps, &mut rng);
+        let w_prime = chain.last().unwrap().clone();
+
+        let (w0_set, _cut1) = normal_forms_all(&w, &tprime, nf_max_depth, nf_max_nodes);
+        let (w0p_set, _cut2) = normal_forms_all(&w_prime, &tprime, nf_max_depth, nf_max_nodes);
+
+        let hit = w0_set.iter().any(|x| w0p_set.contains(x));
+        if hit {
+            success += 1;
+        } else {
+            fail += 1;
+        }
     }
-    (ok, fail, num_trials)
+
+    (success, fail)
 }
 
 fn main() {
-    let t: Rules = vec![
-        ("JFF".into(), "EID".into()),
-        ("CFG".into(), "IC".into()),
-        ("GF".into(), "GG".into()),
-        ("IC".into(), "JI".into()),
-        ("AD".into(), "BD".into()),
-        ("FFI".into(), "HGH".into()),
-        ("FHDQ".into(), "FHEDQ".into()),
-        ("HA".into(), "JH".into()),
-        ("HE".into(), "HDD".into()),
-        ("GGA".into(), "HCE".into()),
-        ("IBB".into(), "DDI".into()),
-    ];
-    let tprime_base: Rules = vec![
-        ("JFF".into(), "EID".into()),
-        ("CFG".into(), "IC".into()),
-        ("GG".into(), "GF".into()),
-        ("JI".into(), "IC".into()),
-        ("BD".into(), "AD".into()),
-        ("HGH".into(), "FFI".into()),
-        ("FHEDQ".into(), "FHDQ".into()),
-        ("JH".into(), "HA".into()),
-        ("HDD".into(), "HE".into()),
-        ("HCE".into(), "GGA".into()),
-        ("IBB".into(), "DDI".into()),
-    ];
-    let kb_max_n = Some(12usize);
-    let tprime_extra = kb_max_n.map(kb_completion_rules).unwrap_or_default();
-    let mut tprime = tprime_base.clone();
-    tprime.extend(tprime_extra);
-    let (ok, fail, trials) = fuzz_forward_only(&t, &tprime, 100, 1, 5, 1, 5, 10_000, 6_000_000, 7);
-    println!("T ⊆ → T': {}/{} ok, {} fail", ok, trials, fail);
+    let t = cfg::rules_t();
+    let tprime = cfg::build_tprime();
+
+    let (success, fail) = fuzz_nf_compare(
+        &t,
+        &tprime,
+        cfg::NUM_TRIALS,
+        cfg::GEN_MIN_LEN,
+        cfg::GEN_MAX_LEN,
+        cfg::CHAIN_MIN_STEPS,
+        cfg::CHAIN_MAX_STEPS,
+        cfg::NF_MAX_DEPTH,
+        cfg::NF_MAX_NODES,
+        cfg::RNG_SEED,
+    );
+
+    println!("NF-compare(T vs T'): success={}, fail={}", success, fail);
 }
