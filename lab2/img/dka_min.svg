@@ -1,0 +1,375 @@
+<?xml version="1.0" standalone="no"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="768pt" height="471pt" viewBox="0.00 0.00 767.99 470.84">
+<g id="graph0" class="graph" transform="translate(4,466.8399963378906) scale(1)" data-name="DFA">
+
+<polygon fill="white" stroke="none" points="-4,4 -4,-466.84 763.99,-466.84 763.99,4 -4,4" style=""/>
+<!-- start_fake -->
+<g id="node1" class="node" pointer-events="visible" data-name="start_fake">
+
+<ellipse fill="black" stroke="black" cx="1.8" cy="-285" rx="1.8" ry="1.8" style=""/>
+</g>
+<!-- q1 -->
+<g id="node2" class="node" pointer-events="visible" data-name="q1">
+
+<ellipse fill="none" stroke="black" cx="67.44" cy="-285" rx="22.7" ry="22.7" style=""/>
+<ellipse fill="none" stroke="black" cx="67.44" cy="-285" rx="26.68" ry="26.68" style=""/>
+<text text-anchor="middle" x="67.44" y="-280.8" font-family="Times,serif" font-size="14.00" style="">Q1</text>
+</g>
+<!-- start_fake&#45;&gt;q1 -->
+<g id="edge1" class="edge" data-name="start_fake-&gt;q1">
+
+<path fill="none" stroke="black" d="M3.9,-285C7.22,-285 17.57,-285 28.92,-285" style=""/>
+<polygon fill="black" stroke="black" points="28.87,-288.5 38.87,-285 28.87,-281.5 28.87,-288.5" style=""/>
+</g>
+<!-- q5 -->
+<g id="node7" class="node" pointer-events="visible" data-name="q5">
+
+<ellipse fill="none" stroke="black" cx="160.12" cy="-312" rx="22.68" ry="22.68" style=""/>
+<text text-anchor="middle" x="160.12" y="-307.8" font-family="Times,serif" font-size="14.00" style="">Q5</text>
+</g>
+<!-- q1&#45;&gt;q5 -->
+<g id="edge2" class="edge" data-name="q1-&gt;q5">
+
+<path fill="none" stroke="black" d="M93.22,-292.38C103.65,-295.48 115.92,-299.14 127.03,-302.45" style=""/>
+<polygon fill="black" stroke="black" points="126.02,-305.8 136.61,-305.3 128.02,-299.09 126.02,-305.8" style=""/>
+<text text-anchor="middle" x="115.78" y="-305.2" font-family="Times,serif" font-size="14.00" style="">a</text>
+</g>
+<!-- q6 -->
+<g id="node8" class="node" pointer-events="visible" data-name="q6">
+
+<ellipse fill="none" stroke="black" cx="160.12" cy="-235" rx="22.68" ry="22.68" style=""/>
+<text text-anchor="middle" x="160.12" y="-230.8" font-family="Times,serif" font-size="14.00" style="">Q6</text>
+</g>
+<!-- q1&#45;&gt;q6 -->
+<g id="edge14" class="edge" data-name="q1-&gt;q6">
+
+<path fill="none" stroke="black" d="M91.32,-272.38C102.96,-265.96 117.24,-258.09 129.69,-251.22" style=""/>
+<polygon fill="black" stroke="black" points="131.23,-254.37 138.3,-246.48 127.85,-248.24 131.23,-254.37" style=""/>
+<text text-anchor="middle" x="115.78" y="-264.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q7 -->
+<g id="node9" class="node" pointer-events="visible" data-name="q7">
+
+<ellipse fill="none" stroke="black" cx="350.3" cy="-440" rx="22.68" ry="22.68" style=""/>
+<text text-anchor="middle" x="350.3" y="-435.8" font-family="Times,serif" font-size="14.00" style="">Q7</text>
+</g>
+<!-- q1&#45;&gt;q7 -->
+<g id="edge30" class="edge" data-name="q1-&gt;q7">
+
+<path fill="none" stroke="black" d="M82.21,-307.47C94.82,-326.77 114.9,-354.49 137.28,-374 170.9,-403.31 182.93,-409.25 225.96,-421 255.95,-429.19 291.08,-434.17 316.16,-436.96" style=""/>
+<polygon fill="black" stroke="black" points="315.78,-440.44 326.09,-438.01 316.51,-433.48 315.78,-440.44" style=""/>
+<text text-anchor="middle" x="204.46" y="-420.2" font-family="Times,serif" font-size="14.00" style="">c</text>
+</g>
+<!-- q2 -->
+<g id="node3" class="node" pointer-events="visible" data-name="q2">
+
+<ellipse fill="none" stroke="black" cx="644.48" cy="-348" rx="22.7" ry="22.7" style=""/>
+<ellipse fill="none" stroke="black" cx="644.48" cy="-348" rx="26.68" ry="26.68" style=""/>
+<text text-anchor="middle" x="644.48" y="-343.8" font-family="Times,serif" font-size="14.00" style="">Q2</text>
+</g>
+<!-- q3 -->
+<g id="node5" class="node" pointer-events="visible" data-name="q3">
+
+<ellipse fill="none" stroke="black" cx="546.97" cy="-278" rx="22.68" ry="22.68" style=""/>
+<text text-anchor="middle" x="546.97" y="-273.8" font-family="Times,serif" font-size="14.00" style="">Q3</text>
+</g>
+<!-- q2&#45;&gt;q3 -->
+<g id="edge3" class="edge" data-name="q2-&gt;q3">
+
+<path fill="none" stroke="black" d="M635.8,-322.63C629.18,-305.62 617.77,-284.52 599.64,-274.2 593.78,-270.87 586.92,-269.81 580.15,-269.98" style=""/>
+<polygon fill="black" stroke="black" points="580.08,-266.47 570.54,-271.08 580.87,-273.42 580.08,-266.47" style=""/>
+<text text-anchor="middle" x="596.14" y="-279.2" font-family="Times,serif" font-size="14.00" style="">a</text>
+</g>
+<!-- q4 -->
+<g id="node6" class="node" pointer-events="visible" data-name="q4">
+
+<ellipse fill="none" stroke="black" cx="737.15" cy="-376" rx="22.68" ry="22.68" style=""/>
+<text text-anchor="middle" x="737.15" y="-371.8" font-family="Times,serif" font-size="14.00" style="">Q4</text>
+</g>
+<!-- q2&#45;&gt;q4 -->
+<g id="edge15" class="edge" data-name="q2-&gt;q4">
+
+<path fill="none" stroke="black" d="M670.25,-355.65C680.79,-358.91 693.22,-362.74 704.42,-366.2" style=""/>
+<polygon fill="black" stroke="black" points="703.06,-369.44 713.65,-369.05 705.13,-362.76 703.06,-369.44" style=""/>
+<text text-anchor="middle" x="692.82" y="-368.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q2&#45;&gt;q7 -->
+<g id="edge31" class="edge" data-name="q2-&gt;q7">
+
+<path fill="none" stroke="black" d="M632.04,-372C624.64,-384.83 613.74,-399.66 599.64,-408 531.54,-448.27 434.75,-447.45 384.49,-443.62" style=""/>
+<polygon fill="black" stroke="black" points="384.82,-440.13 374.55,-442.76 384.22,-447.11 384.82,-440.13" style=""/>
+<text text-anchor="middle" x="497.8" y="-446.2" font-family="Times,serif" font-size="14.00" style="">c</text>
+</g>
+<!-- q9 -->
+<g id="node4" class="node" pointer-events="visible" data-name="q9">
+
+<ellipse fill="none" stroke="black" cx="252.79" cy="-357" rx="22.7" ry="22.7" style=""/>
+<ellipse fill="none" stroke="black" cx="252.79" cy="-357" rx="26.68" ry="26.68" style=""/>
+<text text-anchor="middle" x="252.79" y="-352.8" font-family="Times,serif" font-size="14.00" style="">Q9</text>
+</g>
+<!-- q9&#45;&gt;q7 -->
+<g id="edge34" class="edge" data-name="q9-&gt;q7">
+
+<path fill="none" stroke="black" d="M273.58,-374.2C288.24,-386.94 308.33,-404.4 324.13,-418.13" style=""/>
+<polygon fill="black" stroke="black" points="321.42,-420.41 331.27,-424.33 326.02,-415.13 321.42,-420.41" style=""/>
+<text text-anchor="middle" x="301.13" y="-405.2" font-family="Times,serif" font-size="14.00" style="">c</text>
+</g>
+<!-- q14 -->
+<g id="node15" class="node" pointer-events="visible" data-name="q14">
+
+<ellipse fill="none" stroke="black" cx="350.3" cy="-167" rx="27.84" ry="27.84" style=""/>
+<text text-anchor="middle" x="350.3" y="-162.8" font-family="Times,serif" font-size="14.00" style="">Q14</text>
+</g>
+<!-- q9&#45;&gt;q14 -->
+<g id="edge7" class="edge" data-name="q9-&gt;q14">
+
+<path fill="none" stroke="black" d="M273.05,-339.34C283.99,-328.23 296.98,-313.01 304.63,-297 322.98,-258.63 305.55,-241.95 322.63,-203 323.5,-201.02 324.49,-199.05 325.57,-197.11" style=""/>
+<polygon fill="black" stroke="black" points="328.32,-199.32 330.72,-189 322.41,-195.56 328.32,-199.32" style=""/>
+<text text-anchor="middle" x="301.13" y="-313.2" font-family="Times,serif" font-size="14.00" style="">a</text>
+</g>
+<!-- q15 -->
+<g id="node16" class="node" pointer-events="visible" data-name="q15">
+
+<ellipse fill="none" stroke="black" cx="350.3" cy="-364" rx="27.84" ry="27.84" style=""/>
+<text text-anchor="middle" x="350.3" y="-359.8" font-family="Times,serif" font-size="14.00" style="">Q15</text>
+</g>
+<!-- q9&#45;&gt;q15 -->
+<g id="edge21" class="edge" data-name="q9-&gt;q15">
+
+<path fill="none" stroke="black" d="M279.93,-358.53C287.86,-359.03 296.61,-359.61 304.63,-360.2 306.7,-360.35 308.81,-360.51 310.95,-360.68" style=""/>
+<polygon fill="black" stroke="black" points="310.62,-364.17 320.87,-361.49 311.19,-357.19 310.62,-364.17" style=""/>
+<text text-anchor="middle" x="301.13" y="-365.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q3&#45;&gt;q2 -->
+<g id="edge16" class="edge" data-name="q3-&gt;q2">
+
+<path fill="none" stroke="black" d="M565.93,-291.17C579.18,-300.87 597.52,-314.31 613.03,-325.69" style=""/>
+<polygon fill="black" stroke="black" points="610.9,-328.47 621.04,-331.55 615.04,-322.82 610.9,-328.47" style=""/>
+<text text-anchor="middle" x="596.14" y="-320.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q11 -->
+<g id="node12" class="node" pointer-events="visible" data-name="q11">
+
+<ellipse fill="none" stroke="black" cx="448.64" cy="-369" rx="27.84" ry="27.84" style=""/>
+<text text-anchor="middle" x="448.64" y="-364.8" font-family="Times,serif" font-size="14.00" style="">Q11</text>
+</g>
+<!-- q4&#45;&gt;q11 -->
+<g id="edge32" class="edge" data-name="q4-&gt;q11">
+
+<path fill="none" stroke="black" d="M714.8,-381.74C708.86,-383.09 702.38,-384.32 696.32,-385 693.22,-385.34 692.43,-385.01 689.32,-385 613.75,-384.78 594.61,-390.21 519.3,-384 508.73,-383.13 497.43,-381.16 487.07,-378.92" style=""/>
+<polygon fill="black" stroke="black" points="487.87,-375.52 477.33,-376.67 486.29,-382.34 487.87,-375.52" style=""/>
+<text text-anchor="middle" x="596.14" y="-391.2" font-family="Times,serif" font-size="14.00" style="">c</text>
+</g>
+<!-- q5&#45;&gt;q9 -->
+<g id="edge17" class="edge" data-name="q5-&gt;q9">
+
+<path fill="none" stroke="black" d="M180.96,-322C187.34,-325.21 194.44,-328.76 200.96,-332 206.52,-334.76 212.43,-337.68 218.17,-340.52" style=""/>
+<polygon fill="black" stroke="black" points="216.36,-343.52 226.88,-344.8 219.45,-337.24 216.36,-343.52" style=""/>
+<text text-anchor="middle" x="204.46" y="-340.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q8 -->
+<g id="node10" class="node" pointer-events="visible" data-name="q8">
+
+<ellipse fill="none" stroke="black" cx="252.79" cy="-221" rx="22.68" ry="22.68" style=""/>
+<text text-anchor="middle" x="252.79" y="-216.8" font-family="Times,serif" font-size="14.00" style="">Q8</text>
+</g>
+<!-- q5&#45;&gt;q8 -->
+<g id="edge4" class="edge" data-name="q5-&gt;q8">
+
+<path fill="none" stroke="black" d="M176.91,-296.15C191.08,-281.93 212.08,-260.86 228.24,-244.64" style=""/>
+<polygon fill="black" stroke="black" points="230.53,-247.3 235.11,-237.74 225.57,-242.35 230.53,-247.3" style=""/>
+<text text-anchor="middle" x="204.46" y="-276.2" font-family="Times,serif" font-size="14.00" style="">a</text>
+</g>
+<!-- q6&#45;&gt;q8 -->
+<g id="edge18" class="edge" data-name="q6-&gt;q8">
+
+<path fill="none" stroke="black" d="M182.61,-231.68C193.48,-230 206.91,-227.93 219.04,-226.06" style=""/>
+<polygon fill="black" stroke="black" points="219.3,-229.56 228.65,-224.57 218.23,-222.64 219.3,-229.56" style=""/>
+<text text-anchor="middle" x="204.46" y="-233.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q10 -->
+<g id="node11" class="node" pointer-events="visible" data-name="q10">
+
+<ellipse fill="none" stroke="black" cx="448.64" cy="-134" rx="27.84" ry="27.84" style=""/>
+<text text-anchor="middle" x="448.64" y="-129.8" font-family="Times,serif" font-size="14.00" style="">Q10</text>
+</g>
+<!-- q6&#45;&gt;q10 -->
+<g id="edge5" class="edge" data-name="q6-&gt;q10">
+
+<path fill="none" stroke="black" d="M171.59,-215.11C193.46,-175.98 248.23,-89.95 322.63,-57 345.12,-47.04 355.49,-47.02 377.97,-57 398.35,-66.05 415.31,-84.33 427.38,-100.82" style=""/>
+<polygon fill="black" stroke="black" points="424.48,-102.77 433.06,-108.99 430.23,-98.78 424.48,-102.77" style=""/>
+<text text-anchor="middle" x="301.13" y="-74.2" font-family="Times,serif" font-size="14.00" style="">a</text>
+</g>
+<!-- q6&#45;&gt;q11 -->
+<g id="edge33" class="edge" data-name="q6-&gt;q11">
+
+<path fill="none" stroke="black" d="M181.64,-243.23C187.8,-245.57 194.61,-248.01 200.96,-250 245.64,-264.01 365.04,-282.53 402.97,-310 412.49,-316.9 420.91,-326.4 427.8,-335.77" style=""/>
+<polygon fill="black" stroke="black" points="424.74,-337.5 433.31,-343.74 430.5,-333.52 424.74,-337.5" style=""/>
+<text text-anchor="middle" x="301.13" y="-279.2" font-family="Times,serif" font-size="14.00" style="">c</text>
+</g>
+<!-- q7&#45;&gt;q11 -->
+<g id="edge19" class="edge" data-name="q7-&gt;q11">
+
+<path fill="none" stroke="black" d="M368.97,-426.98C382.32,-417.14 400.98,-403.39 416.77,-391.75" style=""/>
+<polygon fill="black" stroke="black" points="418.49,-394.83 424.46,-386.08 414.34,-389.19 418.49,-394.83" style=""/>
+<text text-anchor="middle" x="399.47" y="-411.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q12 -->
+<g id="node13" class="node" pointer-events="visible" data-name="q12">
+
+<ellipse fill="none" stroke="black" cx="350.3" cy="-240" rx="27.84" ry="27.84" style=""/>
+<text text-anchor="middle" x="350.3" y="-235.8" font-family="Times,serif" font-size="14.00" style="">Q12</text>
+</g>
+<!-- q8&#45;&gt;q12 -->
+<g id="edge6" class="edge" data-name="q8-&gt;q12">
+
+<path fill="none" stroke="black" d="M271.12,-207.05C280.91,-200.9 293.4,-195.92 304.63,-200.2 311.39,-202.77 317.77,-206.88 323.48,-211.51" style=""/>
+<polygon fill="black" stroke="black" points="320.96,-213.96 330.74,-218.04 325.65,-208.75 320.96,-213.96" style=""/>
+<text text-anchor="middle" x="301.13" y="-205.2" font-family="Times,serif" font-size="14.00" style="">a</text>
+</g>
+<!-- q13 -->
+<g id="node14" class="node" pointer-events="visible" data-name="q13">
+
+<ellipse fill="none" stroke="black" cx="350.3" cy="-94" rx="27.84" ry="27.84" style=""/>
+<text text-anchor="middle" x="350.3" y="-89.8" font-family="Times,serif" font-size="14.00" style="">Q13</text>
+</g>
+<!-- q8&#45;&gt;q13 -->
+<g id="edge20" class="edge" data-name="q8-&gt;q13">
+
+<path fill="none" stroke="black" d="M267.28,-203.07C282.5,-182.82 307.56,-149.5 325.98,-125.01" style=""/>
+<polygon fill="black" stroke="black" points="328.56,-127.41 331.77,-117.31 322.96,-123.2 328.56,-127.41" style=""/>
+<text text-anchor="middle" x="301.13" y="-166.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q10&#45;&gt;q14 -->
+<g id="edge8" class="edge" data-name="q10-&gt;q14">
+
+<path fill="none" stroke="black" d="M422.76,-144.54C416.36,-147.11 409.45,-149.76 402.97,-152 398.22,-153.64 393.19,-155.25 388.2,-156.78" style=""/>
+<polygon fill="black" stroke="black" points="387.53,-153.33 378.93,-159.52 389.51,-160.04 387.53,-153.33" style=""/>
+<text text-anchor="middle" x="399.47" y="-159.2" font-family="Times,serif" font-size="14.00" style="">a</text>
+</g>
+<!-- q16 -->
+<g id="node17" class="node" pointer-events="visible" data-name="q16">
+
+<ellipse fill="none" stroke="black" cx="546.97" cy="-94" rx="27.84" ry="27.84" style=""/>
+<text text-anchor="middle" x="546.97" y="-89.8" font-family="Times,serif" font-size="14.00" style="">Q16</text>
+</g>
+<!-- q10&#45;&gt;q16 -->
+<g id="edge22" class="edge" data-name="q10-&gt;q16">
+
+<path fill="none" stroke="black" d="M467.64,-113.29C475.1,-106.18 484.34,-99.06 494.3,-95.2 498.51,-93.57 503.06,-92.54 507.66,-91.92" style=""/>
+<polygon fill="black" stroke="black" points="507.74,-95.43 517.49,-91.28 507.29,-88.44 507.74,-95.43" style=""/>
+<text text-anchor="middle" x="497.8" y="-100.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q11&#45;&gt;q3 -->
+<g id="edge35" class="edge" data-name="q11-&gt;q3">
+
+<path fill="none" stroke="black" d="M464.11,-345.43C472.07,-333.66 482.68,-319.73 494.3,-309.2 500.82,-303.3 508.61,-297.91 516.14,-293.34" style=""/>
+<polygon fill="black" stroke="black" points="517.85,-296.4 524.79,-288.39 514.38,-290.32 517.85,-296.4" style=""/>
+<text text-anchor="middle" x="497.8" y="-314.2" font-family="Times,serif" font-size="14.00" style="">c</text>
+</g>
+<!-- q17 -->
+<g id="node18" class="node" pointer-events="visible" data-name="q17">
+
+<ellipse fill="none" stroke="black" cx="546.97" cy="-347" rx="27.84" ry="27.84" style=""/>
+<text text-anchor="middle" x="546.97" y="-342.8" font-family="Times,serif" font-size="14.00" style="">Q17</text>
+</g>
+<!-- q11&#45;&gt;q17 -->
+<g id="edge23" class="edge" data-name="q11-&gt;q17">
+
+<path fill="none" stroke="black" d="M467.69,-348.69C475.15,-341.75 484.38,-334.83 494.3,-331.2 499.83,-329.17 505.75,-329.09 511.55,-330.12" style=""/>
+<polygon fill="black" stroke="black" points="510.35,-333.42 520.93,-332.83 512.3,-326.7 510.35,-333.42" style=""/>
+<text text-anchor="middle" x="497.8" y="-336.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q12&#45;&gt;q8 -->
+<g id="edge9" class="edge" data-name="q12-&gt;q8">
+
+<path fill="none" stroke="black" d="M322.6,-234.69C311.44,-232.47 298.37,-229.87 286.64,-227.53" style=""/>
+<polygon fill="black" stroke="black" points="287.44,-224.13 276.95,-225.61 286.08,-230.99 287.44,-224.13" style=""/>
+<text text-anchor="middle" x="301.13" y="-236.2" font-family="Times,serif" font-size="14.00" style="">a</text>
+</g>
+<!-- q12&#45;&gt;q10 -->
+<g id="edge24" class="edge" data-name="q12-&gt;q10">
+
+<path fill="none" stroke="black" d="M369.88,-219.56C384.54,-203.43 405.17,-180.73 421.49,-162.76" style=""/>
+<polygon fill="black" stroke="black" points="423.96,-165.25 428.1,-155.5 418.78,-160.54 423.96,-165.25" style=""/>
+<text text-anchor="middle" x="399.47" y="-195.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q13&#45;&gt;q8 -->
+<g id="edge25" class="edge" data-name="q13-&gt;q8">
+
+<path fill="none" stroke="black" d="M325.65,-107.92C315.94,-114.58 305.22,-123.26 297.63,-133.2 284.61,-150.26 289.19,-158.79 279.63,-178 277.3,-182.69 274.64,-187.55 271.93,-192.24" style=""/>
+<polygon fill="black" stroke="black" points="268.94,-190.42 266.81,-200.8 274.95,-194.01 268.94,-190.42" style=""/>
+<text text-anchor="middle" x="301.13" y="-138.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q13&#45;&gt;q10 -->
+<g id="edge10" class="edge" data-name="q13-&gt;q10">
+
+<path fill="none" stroke="black" d="M377.71,-100.56C385.94,-102.92 394.95,-105.84 402.97,-109.2 406.79,-110.8 410.71,-112.64 414.56,-114.59" style=""/>
+<polygon fill="black" stroke="black" points="412.67,-117.55 423.14,-119.16 415.96,-111.37 412.67,-117.55" style=""/>
+<text text-anchor="middle" x="399.47" y="-114.2" font-family="Times,serif" font-size="14.00" style="">a</text>
+</g>
+<!-- q14&#45;&gt;q1 -->
+<g id="edge26" class="edge" data-name="q14-&gt;q1">
+
+<path fill="none" stroke="black" d="M325.25,-153.98C316.68,-150.72 306.86,-148.51 297.63,-150 223.53,-161.93 199.4,-160.88 137.28,-203 117.81,-216.2 100.76,-236.39 88.5,-253.43" style=""/>
+<polygon fill="black" stroke="black" points="85.89,-251.06 83.07,-261.27 91.64,-255.05 85.89,-251.06" style=""/>
+<text text-anchor="middle" x="204.46" y="-173.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q14&#45;&gt;q10 -->
+<g id="edge11" class="edge" data-name="q14-&gt;q10">
+
+<path fill="none" stroke="black" d="M369.96,-147.37C377.37,-140.93 386.4,-134.56 395.97,-131.2 400.28,-129.69 404.92,-128.88 409.58,-128.57" style=""/>
+<polygon fill="black" stroke="black" points="409.51,-132.07 419.54,-128.66 409.57,-125.07 409.51,-132.07" style=""/>
+<text text-anchor="middle" x="399.47" y="-136.2" font-family="Times,serif" font-size="14.00" style="">a</text>
+</g>
+<!-- q15&#45;&gt;q1 -->
+<g id="edge12" class="edge" data-name="q15-&gt;q1">
+
+<path fill="none" stroke="black" d="M335.77,-388.1C328.18,-399.09 317.62,-410.96 304.63,-417 301.81,-418.31 300.7,-417.5 297.63,-417 220.35,-404.4 201.61,-388.65 137.28,-344 122.92,-334.03 108.06,-321.61 95.85,-310.74" style=""/>
+<polygon fill="black" stroke="black" points="98.35,-308.28 88.58,-304.17 93.65,-313.48 98.35,-308.28" style=""/>
+<text text-anchor="middle" x="204.46" y="-394.2" font-family="Times,serif" font-size="14.00" style="">a</text>
+</g>
+<!-- q15&#45;&gt;q10 -->
+<g id="edge27" class="edge" data-name="q15-&gt;q10">
+
+<path fill="none" stroke="black" d="M361.98,-338.51C379.12,-297.58 412.85,-217.06 432.48,-170.19" style=""/>
+<polygon fill="black" stroke="black" points="435.69,-171.58 436.33,-161 429.23,-168.87 435.69,-171.58" style=""/>
+<text text-anchor="middle" x="399.47" y="-260.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q15&#45;&gt;q11 -->
+<g id="edge36" class="edge" data-name="q15-&gt;q11">
+
+<path fill="none" stroke="black" d="M378.39,-365.41C387.93,-365.9 398.85,-366.47 409.15,-367" style=""/>
+<polygon fill="black" stroke="black" points="408.73,-370.49 418.9,-367.51 409.1,-363.49 408.73,-370.49" style=""/>
+<text text-anchor="middle" x="399.47" y="-371.2" font-family="Times,serif" font-size="14.00" style="">c</text>
+</g>
+<!-- q16&#45;&gt;q1 -->
+<g id="edge13" class="edge" data-name="q16-&gt;q1">
+
+<path fill="none" stroke="black" d="M534.11,-69.3C518.81,-41.45 489.36,0 449.64,0 159.12,0 159.12,0 159.12,0 107.88,0 81.75,-169.4 72.47,-247" style=""/>
+<polygon fill="black" stroke="black" points="69.02,-246.35 71.34,-256.68 75.97,-247.15 69.02,-246.35" style=""/>
+<text text-anchor="middle" x="301.13" y="-4.2" font-family="Times,serif" font-size="14.00" style="">a</text>
+</g>
+<!-- q16&#45;&gt;q10 -->
+<g id="edge28" class="edge" data-name="q16-&gt;q10">
+
+<path fill="none" stroke="black" d="M520.83,-104.44C510.01,-108.93 497.16,-114.27 485.38,-119.16" style=""/>
+<polygon fill="black" stroke="black" points="484.24,-115.84 476.34,-122.91 486.92,-122.31 484.24,-115.84" style=""/>
+<text text-anchor="middle" x="497.8" y="-120.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+<!-- q17&#45;&gt;q2 -->
+<g id="edge37" class="edge" data-name="q17-&gt;q2">
+
+<path fill="none" stroke="black" d="M575.08,-347.28C584.78,-347.39 595.88,-347.5 606.28,-347.61" style=""/>
+<polygon fill="black" stroke="black" points="606.06,-351.11 616.1,-347.71 606.14,-344.11 606.06,-351.11" style=""/>
+<text text-anchor="middle" x="596.14" y="-352.2" font-family="Times,serif" font-size="14.00" style="">c</text>
+</g>
+<!-- q17&#45;&gt;q11 -->
+<g id="edge29" class="edge" data-name="q17-&gt;q11">
+
+<path fill="none" stroke="black" d="M519.48,-353.05C509.48,-355.33 497.92,-357.97 487.11,-360.44" style=""/>
+<polygon fill="black" stroke="black" points="486.66,-356.95 477.69,-362.59 488.22,-363.78 486.66,-356.95" style=""/>
+<text text-anchor="middle" x="497.8" y="-363.2" font-family="Times,serif" font-size="14.00" style="">b</text>
+</g>
+</g>
+</svg>

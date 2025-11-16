@@ -1,0 +1,174 @@
+digraph NFA {
+    rankdir=LR;
+    node [shape=circle];
+
+    // техническая стартовая точка и узел &
+    start [shape=point];
+    amp   [label="&"];
+
+    start -> amp;
+
+    // эпсилон-переходы в стартовые состояния всех автоматов
+    amp -> q1      [label="ε"];
+    amp -> e_even  [label="ε"];
+    amp -> c_even  [label="ε"];
+    amp -> b0      [label="ε"];
+    amp -> bb0     [label="ε"];
+    amp -> t0      [label="ε"];
+    amp -> ac0     [label="ε"];
+
+    // ================================
+    // ДКА по исходной регулярке
+    // ================================
+    // состояния (Q1, Q2, Q9 — принимающие)
+    q1  [shape=doublecircle, label="Q1"];
+    q2  [shape=doublecircle, label="Q2"];
+    q9  [shape=doublecircle, label="Q9"];
+
+    q3  [label="Q3"];
+    q4  [label="Q4"];
+    q5  [label="Q5"];
+    q6  [label="Q6"];
+    q7  [label="Q7"];
+    q8  [label="Q8"];
+    q10 [label="Q10"];
+    q11 [label="Q11"];
+    q12 [label="Q12"];
+    q13 [label="Q13"];
+    q14 [label="Q14"];
+    q15 [label="Q15"];
+    q16 [label="Q16"];
+    q17 [label="Q17"];
+
+    // переходы по a
+    q1  -> q5  [label="a"];
+    q2  -> q3  [label="a"];
+    q5  -> q8  [label="a"];
+    q6  -> q10 [label="a"];
+    q8  -> q12 [label="a"];
+    q9  -> q14 [label="a"];
+    q10 -> q14 [label="a"];
+    q12 -> q8  [label="a"];
+    q13 -> q10 [label="a"];
+    q14 -> q10 [label="a"];
+    q15 -> q1  [label="a"];
+    q16 -> q1  [label="a"];
+
+    // переходы по b
+    q1  -> q6  [label="b"];
+    q2  -> q4  [label="b"];
+    q3  -> q2  [label="b"];
+    q5  -> q9  [label="b"];
+    q6  -> q8  [label="b"];
+    q7  -> q11 [label="b"];
+    q8  -> q13 [label="b"];
+    q9  -> q15 [label="b"];
+    q10 -> q16 [label="b"];
+    q11 -> q17 [label="b"];
+    q12 -> q10 [label="b"];
+    q13 -> q8  [label="b"];
+    q14 -> q1  [label="b"];
+    q15 -> q10 [label="b"];
+    q16 -> q10 [label="b"];
+    q17 -> q11 [label="b"];
+
+    // переходы по c
+    q1  -> q7  [label="c"];
+    q2  -> q7  [label="c"];
+    q4  -> q11 [label="c"];
+    q6  -> q11 [label="c"];
+    q9  -> q7  [label="c"];
+    q11 -> q3  [label="c"];
+    q15 -> q11 [label="c"];
+    q17 -> q2  [label="c"];
+
+    // ================================
+    // ДКА: чётная длина слова
+    // ================================
+    e_even [shape=doublecircle, label="E_even"];
+    e_odd  [label="E_odd"];
+
+    e_even -> e_odd  [label="a,b,c"];
+    e_odd  -> e_even [label="a,b,c"];
+
+    // ================================
+    // ДКА: чётное число букв 'c'
+    // ================================
+    c_even [shape=doublecircle, label="C_even"];
+    c_odd  [label="C_odd"];
+
+    c_even -> c_odd  [label="c"];
+    c_odd  -> c_even [label="c"];
+
+    c_even -> c_even [label="a,b"];
+    c_odd  -> c_odd  [label="a,b"];
+
+    // ==============================================
+    // ДКА: непустое слово содержит хотя бы одну 'b'
+    // ==============================================
+    b0 [shape=doublecircle, label="B0"];
+    b1 [label="B1"];
+    b2 [shape=doublecircle, label="B2"];
+
+    b0 -> b2 [label="b"];
+    b0 -> b1 [label="a,c"];
+
+    b1 -> b1 [label="a,c"];
+    b1 -> b2 [label="b"];
+
+    b2 -> b2 [label="a,b,c"];
+
+    // ======================================
+    // ДКА: слово не оканчивается на суффикс bb
+    // ======================================
+    bb0 [shape=doublecircle, label="BB0"];
+    bb1 [shape=doublecircle, label="BB1"];
+    bb2 [label="BB2"];
+
+    bb0 -> bb1 [label="b"];
+    bb0 -> bb0 [label="a,c"];
+
+    bb1 -> bb2 [label="b"];
+    bb1 -> bb0 [label="a,c"];
+
+    bb2 -> bb2 [label="b"];
+    bb2 -> bb0 [label="a,c"];
+
+    // ======================================
+    // ДКА: нет подслова 'ccc' (макс 2 'c' подряд)
+    // ======================================
+    t0 [shape=doublecircle, label="T0"];
+    t1 [shape=doublecircle, label="T1"];
+    t2 [shape=doublecircle, label="T2"];
+    t3 [label="T3"];
+
+    t0 -> t1 [label="c"];
+    t0 -> t0 [label="a,b"];
+
+    t1 -> t2 [label="c"];
+    t1 -> t0 [label="a,b"];
+
+    t2 -> t3 [label="c"];
+    t2 -> t0 [label="a,b"];
+
+    t3 -> t3 [label="a,b,c"];
+
+    // ==========================================================
+    // ДКА: после первой 'c' любая 'a' должна идти только как 'ab'
+    // ==========================================================
+    ac0     [shape=doublecircle, label="AC0"];
+    ac1     [shape=doublecircle, label="AC1"];
+    ac_wait [label="AC_wait"];
+    ac_dead [label="AC_dead"];
+
+    ac0 -> ac0 [label="a,b"];
+    ac0 -> ac1 [label="c"];
+
+    ac1 -> ac1     [label="b,c"];
+    ac1 -> ac_wait [label="a"];
+
+    ac_wait -> ac1     [label="b"];
+    ac_wait -> ac_dead [label="a,c"];
+
+    ac_dead -> ac_dead [label="a,b,c"];
+}

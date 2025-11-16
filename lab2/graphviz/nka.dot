@@ -1,0 +1,67 @@
+digraph NFA_min {
+    rankdir=LR;
+    node [shape=circle];
+
+    // техническая стартовая точка
+    start_fake [shape=point];
+    start_fake -> start;
+
+    // состояния
+    start               [label="start"];
+    A_in                [label="A_in"];
+    A_in_aa             [label="A_in_aa"];
+    A_in_ab             [label="A_in_ab"];
+    A_in_ba             [label="A_in_ba"];
+    A_in_bb             [label="A_in_bb"];
+    A_mid2              [label="A_mid2"];
+    A_mid2_ab           [label="A_mid2_ab"];
+    A_mid2_ba           [label="A_mid2_ba"];
+    A_end_OR_B_start    [shape=doublecircle, label="A_end_OR_B_start"];
+    B_mid               [label="B_mid"];
+    B_in_ab             [label="B_in_ab"];
+    B_in_bc             [label="B_in_bc"];
+    B_in_cb             [label="B_in_cb"];
+    B_mid_bc            [label="B_mid_bc"];
+
+    // ----- ε-переходы -----
+    start -> A_end_OR_B_start [label="ε"];
+    start -> A_in  [label="ε"];
+
+    // ----- буквенные переходы -----
+
+    // Часть A*
+    A_in -> A_in_aa [label="a"];
+    A_in -> A_in_ab [label="a"];
+    A_in -> A_in_bb [label="b"];
+    A_in -> A_in_ba [label="b"];
+
+    A_in_aa -> A_in [label="a"];
+    A_in_bb -> A_in [label="b"];
+
+    A_in_ab -> A_mid2 [label="b"];
+    A_in_ba -> A_mid2 [label="a"];
+
+    A_mid2 -> A_mid2_ab [label="a"];
+    A_mid2 -> A_in_ba   [label="a"];
+    A_mid2 -> A_in_ab   [label="b"];
+    A_mid2 -> A_mid2_ba [label="b"];
+
+    A_mid2_ab -> start [label="b"];
+    A_mid2_ba -> start [label="a"];
+
+    // Часть B*
+    A_end_OR_B_start -> B_in_ab [label="a"];
+    A_end_OR_B_start -> B_in_bc [label="b"];
+    A_end_OR_B_start -> B_in_cb [label="c"];
+
+    B_in_ab -> A_end_OR_B_start [label="b"];
+
+    B_in_bc -> B_mid [label="c"];
+    B_in_cb -> B_mid [label="b"];
+
+    B_mid -> B_in_cb  [label="b"];
+    B_mid -> B_mid_bc [label="b"];
+    B_mid -> B_in_ab  [label="c"];
+
+    B_mid_bc -> A_end_OR_B_start [label="c"];
+}

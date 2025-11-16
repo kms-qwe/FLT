@@ -1,0 +1,70 @@
+digraph DFA {
+    rankdir=LR;
+    node [shape=circle];
+
+    // техническое начальное состояние
+    start_fake [shape=point];
+    start_fake -> q1;
+
+    // состояния (Q1, Q2, Q9 — принимающие)
+    q1  [shape=doublecircle, label="Q1"];
+    q2  [shape=doublecircle, label="Q2"];
+    q9  [shape=doublecircle, label="Q9"];
+
+    q3  [label="Q3"];
+    q4  [label="Q4"];
+    q5  [label="Q5"];
+    q6  [label="Q6"];
+    q7  [label="Q7"];
+    q8  [label="Q8"];
+    q10 [label="Q10"];
+    q11 [label="Q11"];
+    q12 [label="Q12"];
+    q13 [label="Q13"];
+    q14 [label="Q14"];
+    q15 [label="Q15"];
+    q16 [label="Q16"];
+    q17 [label="Q17"];
+
+    // переходы по a
+    q1  -> q5  [label="a"];
+    q2  -> q3  [label="a"];
+    q5  -> q8  [label="a"];
+    q6  -> q10 [label="a"];
+    q8  -> q12 [label="a"];
+    q9  -> q14 [label="a"];
+    q10 -> q14 [label="a"];
+    q12 -> q8  [label="a"];
+    q13 -> q10 [label="a"];
+    q14 -> q10 [label="a"];
+    q15 -> q1  [label="a"];
+    q16 -> q1  [label="a"];
+
+    // переходы по b
+    q1  -> q6  [label="b"];
+    q2  -> q4  [label="b"];
+    q3  -> q2  [label="b"];
+    q5  -> q9  [label="b"];
+    q6  -> q8  [label="b"];
+    q7  -> q11 [label="b"];
+    q8  -> q13 [label="b"];
+    q9  -> q15 [label="b"];
+    q10 -> q16 [label="b"];
+    q11 -> q17 [label="b"];
+    q12 -> q10 [label="b"];
+    q13 -> q8  [label="b"];
+    q14 -> q1  [label="b"];
+    q15 -> q10 [label="b"];
+    q16 -> q10 [label="b"];
+    q17 -> q11 [label="b"];
+
+    // переходы по c
+    q1  -> q7  [label="c"];
+    q2  -> q7  [label="c"];
+    q4  -> q11 [label="c"];
+    q6  -> q11 [label="c"];
+    q9  -> q7  [label="c"];
+    q11 -> q3  [label="c"];
+    q15 -> q11 [label="c"];
+    q17 -> q2  [label="c"];
+}
